@@ -1,0 +1,31 @@
+[global_config]
+  putty_paste_style = True
+[keybindings]
+  zoom_in = <Alt>KP_7
+  zoom_out = <Alt>KP_1
+  split_horiz = <Alt>KP_3
+  split_vert = <Alt>KP_9
+  resize_up = <Alt>KP_8
+  resize_down = <Alt>KP_2
+  resize_left = <Alt>KP_4
+  resize_right = <Alt>KP_6
+  toggle_zoom = <Alt>KP_5
+  scaled_zoom = <Shift><Alt>z
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    scrollback_infinite = True
+    copy_on_selection = True
+  [[victim]]
+    background_color = "#fbf1c7"
+    cursor_color = "#aaaaaa"
+    foreground_color = "#3c3836"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
