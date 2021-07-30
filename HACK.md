@@ -235,7 +235,6 @@ chisel server --reverse --port 9002
 
 - On attacker, go to `localhost:9001`
 
-
 ## Password Hack
 
 ### Hydra
