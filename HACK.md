@@ -322,23 +322,17 @@ sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Subm
 ## pwncat
 
 ```sh
-apt install python3.8-dev
-pip3 install base64io
-git clone https://github.com/calebstewart/pwncat.git
 python3 -m venv pwncat-env
 source pwncat-env/bin/activate
-python setup.py install
-pip install -U git+https://github.com/calebstewart/paramiko
-pip install git+https://github.com/JohnHammond/base64io-python
+pip install pwncat-cs
+```
 
-pwncat -lp 1234
-
-upload
-download
-
-privesc -l
-privesc -e -u root
-prompt --fancy
+```sh
+pwncat-cs
+listen -m linux 1234
+sessions
+sessions 0
+ctrl+d
 ```
 
 ### track modifications
