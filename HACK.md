@@ -6,6 +6,7 @@
 		- [FTP Port 21](#ftp-port-21)
 		- [SNMP Port 161](#snmp-port-161)
 		- [Web Port 80, 443](#web-port-80-443)
+			- [FeroxBuster](#feroxbuster)
 		- [MySQL Port 3306 & MsSQL Port 1433](#mysql-port-3306--mssql-port-1433)
 		- [SMB Port 445,139 & RPC Port 111,135](#smb-port-445139--rpc-port-111135)
 	- [SHELL](#shell)
@@ -82,6 +83,14 @@ gobuster dir -e -u http://$IP -w /usr/share/wordlists/dirbuster/directory-list-2
 wfuzz --hc 404 -c -w /usr/share/seclists/Discovery/Web-Content/common.txt http://$IP/FUZZ.txt
 wfuzz -c --hc 403  -u http://paper -H "Host: FUZZ.paper" -w /usr/share/wfuzz/wordlist/general/common.txt
 ffuf -fc 403 -w /usr/share/wfuzz/wordlist/general/common.txt -u http://paper/ -H "Host: FUZZ.paper"
+```
+
+#### FeroxBuster
+
+```sh
+sudo apt update && sudo apt install -y feroxbuster
+
+feroxbuster -e -d0 --url url
 ```
 
 ### MySQL Port 3306 & MsSQL Port 1433
