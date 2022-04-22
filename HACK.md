@@ -108,7 +108,9 @@ nmap -p 139,445 192.168.1.1/24 --script smb-enum-shares.nse smb-os-discovery.nse
 nmap --script rpcinfo.nse $IP -p 111
 rpcclient -U "" -N
 smbclient -L $IP
+smbclient \\\\hack.thm\\websvr
 showmount -e $IP
+smbmap -H hack.thm -R 
 smbmap -H $IP -d <domain> -u <user> -p <password>
 mount -t cifs //$IP/<share> <local dir> -o username="guest", password=""
 ```
