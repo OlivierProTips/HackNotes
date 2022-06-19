@@ -26,6 +26,7 @@
 		- [List writable folders](#list-writable-folders)
 		- [List of executable binaries](#list-of-executable-binaries)
 		- [Netcat](#netcat)
+	- [SSH](#ssh)
 	- [Password Hack](#password-hack)
 		- [Hydra](#hydra)
 		- [JohnTheRipper](#johntheripper)
@@ -260,6 +261,17 @@ chisel server --reverse --port 9002
 ```
 
 - On attacker, go to `localhost:9001`
+
+## SSH
+
+* -L: Direct Redirect
+* -D: SOCKS Redirect
+* -N: Do not connect
+
+Redirect localhost to victim host
+```bash
+ssh -N -L 8080:hack.thm:8080 localhost
+```
 
 ## Password Hack
 
