@@ -23,6 +23,7 @@
 		- [LinPeas](#linpeas)
 	- [Enum](#enum)
 		- [List SUID files](#list-suid-files)
+		- [List capabilities files](#list-capabilities-files)
 		- [List writable folders](#list-writable-folders)
 		- [List of executable binaries](#list-of-executable-binaries)
 		- [Netcat](#netcat)
@@ -225,6 +226,12 @@ sudo -u#-1 /bin/bash
 
 ```sh
 find / -perm /4000 2>/dev/null
+```
+
+### List capabilities files
+
+```sh
+getcap -r / 2>/dev/null
 ```
 
 ### List writable folders
