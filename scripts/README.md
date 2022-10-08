@@ -41,6 +41,8 @@ Display a menu that allow to select an openvpn file to be launched
 
 Usage: `sudo vpnchoice`
 
+![vpnchoice](../images/vpnchoice.gif)
+
 ### Install
 
 1. Install simple-term-menu
