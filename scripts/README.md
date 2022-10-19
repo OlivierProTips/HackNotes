@@ -64,3 +64,20 @@ sudo chmod +x /usr/local/bin/vpnchoice
 echo "alias vpnchoice='sudo vpnchoice'" >> ~/.zshrc
 ``` 
 
+## Burpsuite for ARM
+
+In order to install burpsuite on Kali ARM (running on Apple Silicon), I've made a script to download/update the jar Community Version and to launch it.
+
+Usage:
+- Launch: `burpsuite`
+- Install/Update: `sudo burpsuite -u`
+
+### Install
+
+1. Copy burpsuite in /usr/local/bin
+
+2. Make burpsuite file executable
+```bash
+sudo chmod +x /usr/local/bin/burpsuite
+```
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ "$#" == 1 && ${1} == "-u" ]]
+then
+  if [ "$EUID" -ne 0 ]
+  then
+    echo "Please run as root to update burpsuite"
+    exit
+  fi
+
+  wget "https://portswigger.net/burp/releases/startdownload?product=community&type=Jar" -O /opt/burpsuite.jar
+else
+  java -jar /opt/burpsuite.jar
+fi
