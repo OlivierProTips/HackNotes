@@ -14,6 +14,7 @@
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
+    font = Fira Code Medium 14
     scrollback_infinite = True
     copy_on_selection = True
   [[victim]]
