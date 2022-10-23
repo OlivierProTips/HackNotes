@@ -38,11 +38,20 @@ sudo systemctl start dnsmasq
 sudo systemctl enable dnsmasq
 ```
 
-## DEPRECATED
-
+- Disable systemd-resolved
 ```bash
 sudo systemctl disable systemd-resolved.service
 sudo systemctl stop systemd-resolved.service
-sudo mv /etc/resolv.conf /etc/resolv.conf.bak
+```
+
+- Modify /etc/resolv.conf
+```bash
+nameserver 127.0.0.1
+options edns0 trust-ad
+```
+
+## DEPRECATED
+
+```bash
 sudo systemctl restart network-manager.service
 ```
