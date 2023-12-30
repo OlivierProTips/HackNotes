@@ -8,7 +8,7 @@ then
     exit
   fi
 
-  wget "https://portswigger.net/burp/releases/startdownload?product=community&type=Jar" -O /opt/burpsuite.jar
+  wget "https://portswigger.net/burp/releases/startdownload?product=community&version=&type=Jar" -O /opt/burpsuite.jar
 else
   java -jar /opt/burpsuite.jar
 fi
