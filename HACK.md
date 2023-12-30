@@ -129,6 +129,7 @@ export TERM=xterm
 CTRL+Z
 stty raw -echo; fg
 [2xENTER]
+```
 
 ```sh
 alias ll='ls -lah --color'
