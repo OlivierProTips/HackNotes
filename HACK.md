@@ -116,6 +116,7 @@ nmap -p 3306 --script="+*mysql* and not brute and not dos and not fuzzer" -vv -o
 ```sh
 enum4linux -a $IP
 nmap -p 139,445 192.168.1.1/24 --script smb-enum-shares.nse smb-os-discovery.nse
+nmap --script "smb-vuln*" -p 445 10.129.227.181
 nmap --script rpcinfo.nse $IP -p 111
 rpcclient -U "" -N
 smbclient -L $IP
