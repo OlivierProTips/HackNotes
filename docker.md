@@ -43,3 +43,21 @@ sudo docker start [id]
 sudo docker stop [id]
 sudo docker rm [id]
 ```
+
+## Docker compose
+
+### Update
+```bash
+docker-compose pull
+docker-compose up -d --remove-orphans
+docker image prune
+```
+
+## Synology
+
+### Update
+
+1. Go to Registry and download new image (mostly the “latest” version)
+2. Go to Container, select the container you need to update and stop it
+3. From Actions menu select “Clear/Reset”
+4. Start the container again
