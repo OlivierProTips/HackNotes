@@ -125,13 +125,10 @@ python -c 'import pty;pty.spawn("/bin/bash")'
 OR
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 
+export TERM=xterm
 CTRL+Z
-ssty size # rows cols
 stty raw -echo; fg
-stty cols [cols] rows [rows]
-export TERM=xterm-256color
 [2xENTER]
-```
 
 ```sh
 alias ll='ls -lah --color'
