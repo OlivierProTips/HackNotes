@@ -17,7 +17,7 @@
     background_color = "#262931"
     font = Fira Code Medium 14
     foreground_color = "#f6f5f4"
-    show_titlebar = False
+    show_titlebar = True
     scrollback_infinite = True
     palette = "#2e3436:#cc0000:#4e9a06:#f6d32d:#3584e4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     use_system_font = False
