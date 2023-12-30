@@ -470,7 +470,7 @@ Server-Side Template Injection
 
 On Kali
 ```bash
-sudo tcpdum -i tun0 icmp
+sudo tcpdump -i tun0 icmp
 ```
 
 On victim
