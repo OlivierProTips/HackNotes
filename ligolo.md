@@ -1,5 +1,11 @@
 # LIGOLO
 
+## Pre-requisite
+
+```bash
+sudo apt install golang-go
+```
+
 ## Install
 
 ```bash
