@@ -14,3 +14,23 @@ Usage: `upload_file_wget.sh file [interface]`
 ```bash
 sudo chmod +x /usr/local/bin/upload_file_wget.sh
 ```
+
+## monip.sh
+
+Display all personal IPs to ease copy paste.
+
+Usage: `monip`
+
+### Install
+
+1. Copy monip.sh in /usr/local/bin with the following content:
+
+2. Make monip.sh file executable
+```bash
+sudo chmod +x /usr/local/bin/monip.sh
+```
+
+3. Create symbolic link
+```bash
+sudo ln -s /usr/local/bin/monip.sh /usr/local/bin/monip
+```
