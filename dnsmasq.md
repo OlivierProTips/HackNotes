@@ -69,4 +69,28 @@ else
 fi
 ```
 
+## Demo
+
 ![Alt text](images/dnsmasq.gif)
+
+## Troubleshooting
+
+Sometimes, it can not work. When you ping the hostname, you get no response.
+
+It is possible this is the fault of `systemd-resolved`
+
+In newest Kali, this service does not exist anymore, but in old Kali, it is responsible of messing up your `/etc/resolv.conf`
+
+- Disable systemd-resolved
+  
+```bash
+sudo systemctl disable systemd-resolved.service
+sudo systemctl stop systemd-resolved.service
+```
+
+- Modify /etc/resolv.conf
+
+```bash
+nameserver 127.0.0.1
+options edns0 trust-ad
+```
