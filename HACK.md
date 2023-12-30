@@ -9,6 +9,7 @@
 			- [FeroxBuster](#feroxbuster)
 		- [MySQL Port 3306 \& MsSQL Port 1433](#mysql-port-3306--mssql-port-1433)
 		- [SMB Port 445,139 \& RPC Port 111,135](#smb-port-445139--rpc-port-111135)
+	- [SQL Injection](#sql-injection)
 	- [SHELL](#shell)
 		- [Stable Shell](#stable-shell)
 		- [Reverse shell](#reverse-shell)
@@ -123,6 +124,18 @@ smbmap -H hack.thm -R
 smbmap -H $IP -d <domain> -u <user> -p <password>
 mount -t cifs //$IP/<share> <local dir> -o username="guest", password=""
 ```
+
+## SQL Injection
+
+`OR 1=1` can be dangerous if an UPDATE/DELETE is done after the SELECT
+
+Prefer using (you have to know the username)
+- admin'; -- -
+- admin' AND '1'='1
+
+That way, SELECT will return only one row
+
+https://book.hacktricks.xyz/pentesting-web/sql-injection
 
 ## SHELL
 
