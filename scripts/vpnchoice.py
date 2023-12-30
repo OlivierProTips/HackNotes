@@ -16,10 +16,11 @@ if os.geteuid() != 0:
 
 # List of openvpn files
 # Use your own files path here
+ovpn_files_folder = "/home/kali/ctf/ovpn_files"
 vpnlist = {
-    "TryHackMe": "/home/kali/ctf/tryhackme/tryhackme.ovpn",
-    "HackTheBox": "/home/kali/ctf/hackthebox/hackthebox.ovpn",
-    "ProvingGrounds": "/home/kali/ctf/pg/pg.ovpn"
+    "TryHackMe": f"{ovpn_files_folder}/tryhackme.ovpn",
+    "HackTheBox": f"{ovpn_files_folder}/hackthebox.ovpn",
+    "ProvingGrounds": f"{ovpn_files_folder}/pg.ovpn"
 }
 
 # Display menu
