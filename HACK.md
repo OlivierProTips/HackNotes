@@ -377,6 +377,7 @@ sudo wifite --wpa --dict file.txt --kill
 wpscan --url $IP/wordpress -e at
 wpscan --url $IP/wordpress -e ap
 wpscan --url $IP/wordpress -e u
+wpscan --url $IP/wordpress --enumerate
 wpscan --url $IP/wordpress -U users.txt -P /usr/share/wordlists/rockyou.txt
 ```
 
