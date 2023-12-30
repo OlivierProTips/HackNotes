@@ -8,6 +8,7 @@ My config for Terminator
 
 ## Shortcuts
 ![Terminator Shortcuts](../images/terminator_shortcuts.png)
+
 These shortcuts use the ALT key + another one:
 * Arrow keys: Move to another terminal
 * Numpad 1 7: Zoom out/in
