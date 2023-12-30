@@ -59,3 +59,8 @@ sudo chmod +x /usr/local/bin/vpnchoice
 
 4. Edit `vpnlist` variable in /usr/local/bin/vpnchoice with your openvpn files
 
+5. [OPTIONAL] Add an alias into ~/.zshrc:
+```bash
+echo "alias vpnchoice='sudo vpnchoice'" >> ~/.zshrc
+``` 
+
