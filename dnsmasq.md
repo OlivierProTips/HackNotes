@@ -7,7 +7,7 @@ sudo apt install dnsmasq
 
 - Add `dns=dnsmasq`to /etc/NetworkManager/NetworkManager.conf
 ```bash
-vi /etc/NetworkManager/NetworkManager.conf   
+sudo vi /etc/NetworkManager/NetworkManager.conf   
 [main]
 dns=dnsmasq
 plugins=ifupdown,keyfile
@@ -18,14 +18,14 @@ managed=false
 
 - Uncomment `conf-dir` in /etc/dnsmasq.conf
 ```bash
-vi /etc/dnsmasq.conf
+sudo vi /etc/dnsmasq.conf
 # Include all files in a directory which end in .conf
 conf-dir=/etc/dnsmasq.d/,*.conf
 ```
 
 - Create a personal conf file
 ```bash
-vi /etc/dnsmasq.d/olivierprotips.conf 
+sudo vi /etc/dnsmasq.d/olivierprotips.conf 
 server=192.168.2.91
 server=8.8.8.8
 
