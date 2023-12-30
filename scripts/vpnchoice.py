@@ -18,7 +18,7 @@ if os.geteuid() != 0:
 ovpn_files_folder = "/home/kali/ctf/ovpn_files"
 
 # Dictionary of openvpn files
-vpnlist = {file.split(".")[0]:f"{ovpn_files_folder}/{file}" for file in os.listdir(ovpn_files_folder) if file.endswith(".ovpn")}
+vpnlist = {file.split(".")[0]:f"{ovpn_files_folder}/{file}" for file in sorted(os.listdir(ovpn_files_folder)) if file.endswith(".ovpn")}
 
 # Display menu
 main_menu_title = "Select an openvpn file:"
