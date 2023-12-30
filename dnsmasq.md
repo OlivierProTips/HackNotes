@@ -68,3 +68,5 @@ else
     exit 1;
 fi
 ```
+
+![Alt text](images/dnsmasq.gif)
