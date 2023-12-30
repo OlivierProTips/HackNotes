@@ -62,7 +62,7 @@ if [ $# -eq 2 ]; then
     fi
 
     echo "address=/.${domain}/${host}" >> "$config_file"
-    sudo systemctl restart NetworkManager.service;
+    systemctl restart NetworkManager.service;
 else
     echo "ERR: Incorrect arguments.";
     exit 1;
