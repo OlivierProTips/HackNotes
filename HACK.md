@@ -9,6 +9,7 @@
 			- [FeroxBuster](#feroxbuster)
 		- [MySQL Port 3306 \& MsSQL Port 1433](#mysql-port-3306--mssql-port-1433)
 		- [SMB Port 445,139 \& RPC Port 111,135](#smb-port-445139--rpc-port-111135)
+		- [DNS](#dns)
 	- [SQL Injection](#sql-injection)
 	- [SHELL](#shell)
 		- [Stable Shell](#stable-shell)
@@ -125,6 +126,14 @@ showmount -e $IP
 smbmap -H hack.thm -R 
 smbmap -H $IP -d <domain> -u <user> -p <password>
 mount -t cifs //$IP/<share> <local dir> -o username="guest", password=""
+```
+
+### DNS
+
+```bash
+dig @10.129.227.180 -x 10.129.227.180
+dig @10.129.227.180 trick.htb any
+dig @10.129.227.180 trick.htb axfr
 ```
 
 ## SQL Injection
