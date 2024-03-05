@@ -37,6 +37,8 @@ sudo systemctl restart NetworkManager.service
 
 ## Script to add entry (thanks Bigyls)
 
+> full script is [here](https://gist.github.com/OlivierProTips/67b3023cafb7221f86510dbbb2e3a63f)
+
 ```bash
 #!/bin/bash
 
