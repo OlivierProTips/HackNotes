@@ -44,7 +44,8 @@ if [ $1 == "add" ]; then
         action=$1
         host=$2
         domain=$3
-sed 's/\// /g'config_path}${tld}".conf"
+        config_file=${config_path}${tld}".conf"
+        sed 's/\// /g' ${config_file}
 
         # If config file does not exist, put the default server
         if [ ! -e "$config_file" ]; then
