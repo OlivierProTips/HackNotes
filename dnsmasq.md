@@ -37,7 +37,7 @@ sudo systemctl restart NetworkManager.service
 
 ## Script to add entry (thanks Bigyls)
 
-> full script is [here](https://gist.github.com/OlivierProTips/67b3023cafb7221f86510dbbb2e3a63f)
+> full script is [here](https://github.com/OlivierProTips/kali-resources/blob/master/dnsmasq-update)
 
 ```bash
 #!/bin/bash
